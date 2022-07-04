@@ -1,39 +1,77 @@
-import React, { useState } from "react";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Operator from "./Operator";
-import Button from "@mui/material/Button";
+import React, { useEffect, useState } from "react";
+import OperationsPage from "./OperationsPage";
+import Operations from "../utils/Enum";
 
+import "./css/app-page.css";
 
 function AppPage(){
-    const [f1, setF1] = useState(0);
-    const [f2, setF2] = useState(0);
-    const [o, setO]   = useState(0);
+    
+    // const [f1, setF1] = useState(0);
+    // const [f2, setF2] = useState(0);
+    const [f3, setF3] = useState(0);
+    const [add, setAdd]   = useState(0);
+    const [mul, setMul]   = useState(0);
+    const [gth, setGth]   = useState(0);
+    const [lth, setLth]   = useState(0);
+    const [neg, setNeg]   = useState(0);
+    const [rng, setRng]   = useState(0);
+    const [eq, setEq]   = useState(0);
+
+    const [op, setOp] = useState("")
+
+
+    const handleInput = (_f1, _f2, op)=>{
+        // setF1(Number(_f1));
+        // setF2(Number(_f2));
+        const f1 = Number(_f1);
+        const f2 = Number(_f2);
+        switch (op) {
+            case Operations.ADD:
+                setAdd(f1+f2);
+                break;
+            case Operations.MUL:
+                setMul(f1*f2);
+                break;
+            case Operations.GREATER:
+                setGth(f1>f2);
+                break;
+            case Operations.LESS:
+                setLth(f1<f2);
+                break;
+            case Operations.ERROREQ:
+                setEq(f1==(f2+f1*0.05) || f1==(f2-f1*0.05));
+                break;
+            case Operations.INRANGE:
+                setRng(f1 > f2 && f1 < f3);
+                break;
+            case Operations.NEG:
+                setNeg(-f1);
+                break;
+            default:
+                setAdd(f1+f2);
+                console.log("Error in switch: no choice was given");
+                break;
+        }
+
+        // console.log(`AppPage: ${o}`);
+    };
 
     function handleClick(){
         // setO();
-        WebAssembly.
+        // WebAssembly.
     }
-    return <div>
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
-        <Box
-            component="form"
-            sx={{
-                '& > :not(style)': { m: 1, width: '25ch' },
-            }}
-            noValidate
-            autoComplete="off"
-        >
-            <Button variant="contained" onClick={()=>{handleClick()}}>Contained</Button>
-            <TextField id="outlined-basic" label="Float 1" variant="outlined" onChange={(e)=>{setF1(e.target.value)}}/>
-            <Operator />
-            <TextField id="outlined-basic" label="Float 2" variant="outlined" onChange={(e)=>{setF2(e.target.value)}}/>
-            <Operator />
-            <TextField id="standard-basic" label="=" variant="outlined" value={o} InputProps={{readOnly:true}}/>
-        </Box>
+
+    const results = {
+        add:add,
+        mul:mul,
+        gth:gth,
+        lth:lth,
+        eq:eq,
+        rng:rng,
+        neg:neg
+        };
+    return <div className="main-page">
+        <OperationsPage callback={handleInput} results={results}/>
     </div>;
 }
 

@@ -1,0 +1,26 @@
+
+
+.debug{
+    border: 2px dashed red;
+}
+
+.main-page{
+    margin: 0% 20%;
+}
+
+.input{
+    /* margin: 10% 50%; */
+    
+    width: 80%;
+    height: 90%;
+}
+
+.icon{
+    margin-top: 40%;
+}
+
+.button-oprtaions{
+    width: 80%;
+    height: 90%;
+}
+
