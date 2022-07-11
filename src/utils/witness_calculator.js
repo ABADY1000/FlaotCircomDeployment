@@ -49,7 +49,7 @@ export async function builder(code, options) {
 //        );
 
     
-    wc = new module.exports.WitnessCalculator(instance, sanityCheck);
+    wc = new WitnessCalculator(instance, sanityCheck);
     return wc;
 
     function getMessage() {
