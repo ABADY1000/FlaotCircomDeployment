@@ -3,6 +3,7 @@ const wc = require("./witness_calculator");
 
 
 export async function generateWitness (file, input) {
+	console.log(`wc:${wc}`);
 	const response = await fetch(file);
 	console.log(response);
 	const buffer = await response.arrayBuffer();
