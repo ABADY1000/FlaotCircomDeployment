@@ -9,14 +9,14 @@ function OperationsPage(props){
 
     const {callback, results} = props;
     return (
-    <Grid columns={5} className="debug">
-        {/* Addition */}
-        <CalculationsRow opIcon={faPlus} resIcon={faEquals} callback={callback} op={Operations.ADD} result={results.add}/>
-        <CalculationsRow opIcon={faMultiply} resIcon={faEquals} callback={callback} op={Operations.MUL} result={results.mul}/>
-        <CalculationsRow opIcon={faGreaterThan} resIcon={faEquals} callback={callback} op={Operations.GREATER} result={results.gth}/>
-        <CalculationsRow opIcon={faLessThan} resIcon={faEquals} callback={callback} op={Operations.LESS} result={results.lth}/>
-        <CalculationsRow opIcon={faMinus} resIcon={faEquals} callback={callback} op={Operations.NEG} result={results.neg}/>
-    </Grid>
+        <Grid columns={5} className="debug">
+            <CalculationsRow opIcon={faPlus} resIcon={faEquals} callback={callback} op={Operations.ADD} result={results.add} numberOfElements={2}/>
+            <CalculationsRow opIcon={faMultiply} resIcon={faEquals} callback={callback} op={Operations.MUL} result={results.mul} numberOfElements={2}/>
+            <CalculationsRow opIcon={faGreaterThan} resIcon={faEquals} callback={callback} op={Operations.GREATER} result={results.gth} numberOfElements={2}/>
+            <CalculationsRow opIcon={faLessThan} resIcon={faEquals} callback={callback} op={Operations.LESS} result={results.lth} numberOfElements={2}/>
+            <CalculationsRow opIcon={faMinus} resIcon={faEquals} callback={callback} op={Operations.NEG} result={results.neg} numberOfElements={1}/>
+            <CalculationsRow opIcon={faLessThan} opIcon2={faLessThan} resIcon={faEquals} callback={callback} op={Operations.INRANGE} result={results.rng} numberOfElements={3}/>
+        </Grid>
     );
 }
 

@@ -13,6 +13,9 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "big-integer": "^1.6.51",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
@@ -23,9 +26,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "npx mocha",
     "eject": "react-scripts eject",
-    "postinstall": "semantic-ui-css-patch"
+    "postinstall": "semantic-ui-css-patch",
+    "copy_wasm": "bash ./scripts/copy_wasm.sh"
   },
   "eslintConfig": {
     "extends": [
@@ -44,5 +48,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
