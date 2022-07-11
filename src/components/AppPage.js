@@ -46,6 +46,7 @@ function AppPage(){
 
                 // Circom-Wasm works here...
                 r = await generateCalldata("./wasm/add.wasm",  {"f1": c1, "f2": c2});
+                console.log(`R:${r}`);
                 setAdd(Float32Bytes2Number(r));
 
                 break;
