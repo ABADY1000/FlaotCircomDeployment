@@ -287,7 +287,7 @@ function fnvHash(str) {
     let hash = bigInt("CBF29CE484222325", 16);
     console.log(2);
     for (var i = 0; i < str.length; i++) {
-        hash = hash.pow(bigInt(str[i].charCodeAt()));
+        hash = hash.xor(bigInt(str[i].charCodeAt()));
         hash = hash.multiply(bigInt(0x100000001B3));
         hash = hash.mod(uint64_max);
     }
