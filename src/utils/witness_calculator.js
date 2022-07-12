@@ -1,4 +1,6 @@
 /* global BigInt */
+const bigInt = require("big-integer");
+
 export async function builder(code, options) {
 
     options = options || {};
@@ -276,7 +278,7 @@ function flatArray(a) {
 }
 
 function fnvHash(str) {
-    const uint64_max = BigInt(2) ** BigInt(64);
+    const uint64_max = bigInt(2).pow(bigInt(64));
     let hash = BigInt("0xCBF29CE484222325");
     for (var i = 0; i < str.length; i++) {
 	hash ^= BigInt(str[i].charCodeAt());
