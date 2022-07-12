@@ -1,5 +1,5 @@
 /* global BigInt */
-module.exports.builder = async function builder(code, options) {
+export async function builder(code, options) {
 
     options = options || {};
 
@@ -49,7 +49,7 @@ module.exports.builder = async function builder(code, options) {
 //        );
 
     
-    wc = new module.exports.WitnessCalculator(instance, sanityCheck);
+    wc = new WitnessCalculator(instance, sanityCheck);
     return wc;
 
     function getMessage() {
@@ -73,7 +73,7 @@ module.exports.builder = async function builder(code, options) {
 
 };
 
-module.exports.WitnessCalculator = class WitnessCalculator {
+export class WitnessCalculator {
     constructor(instance, sanityCheck) {
         this.instance = instance;
 
