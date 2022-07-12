@@ -1,5 +1,5 @@
 /* global BigInt */
-const bigInt = require("big-integer");
+const bigInt = require('big-integer');
 
 export async function builder(code, options) {
 
@@ -114,6 +114,9 @@ export class WitnessCalculator {
                     this.instance.exports.writeSharedRWMemory(j,arrFr[this.n32-1-j]);
                 }
                 try {
+                    console.log("MSB,LSB");
+                    console.log(hMSB);
+                    console.log(hLSB);
                     this.instance.exports.setInputSignal(hMSB, hLSB,i);
                     input_counter++;
                 } catch (err) {
@@ -278,15 +281,23 @@ function flatArray(a) {
 }
 
 function fnvHash(str) {
-    const uint64_max = bigInt(2).pow(bigInt(64));
-    let hash = BigInt("0xCBF29CE484222325");
+    console.log(0);
+    const uint64_max = bigInt(2) ** bigInt(64);
+    console.log(1);
+    let hash = bigInt("CBF29CE484222325", 16);
+    console.log(2);
     for (var i = 0; i < str.length; i++) {
-	hash ^= BigInt(str[i].charCodeAt());
-	hash *= BigInt(0x100000001B3);
-	hash %= uint64_max;
+        hash = hash.pow(bigInt(str[i].charCodeAt()));
+        hash = hash.multiply(bigInt(0x100000001B3));
+        hash = hash.mod(uint64_max);
     }
+    console.log(3);
     let shash = hash.toString(16);
+    console.log(4);
     let n = 16 - shash.length;
+    console.log(5);
     shash = '0'.repeat(n).concat(shash);
+    console.log(6);
+    console.log(shash);
     return shash;
 }

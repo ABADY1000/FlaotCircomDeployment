@@ -129,7 +129,7 @@ class WitnessCalculator {
 		    this.instance.exports.writeSharedRWMemory(j,arrFr[this.n32-1-j]);
 		}
 		try {
-                    this.instance.exports.setInputSignal(hMSB, hLSB,i);
+            this.instance.exports.setInputSignal(hMSB, hLSB,i);
 		    input_counter++;
 		} catch (err) {
 		    // console.log(`After adding signal ${i} of ${k}`)
